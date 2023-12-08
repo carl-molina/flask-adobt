@@ -1,0 +1,29 @@
+{% extends 'base.html %}
+
+{% block title %} {% endblock title %}
+
+{% block content %}
+
+<div>
+  {% for msg in get_flashed_messages() %}
+  <p>{{ msg }}</p>
+  {% endfor %}
+</div>
+
+
+<ul>
+  {% for pet in pets %}
+  <li>
+    {{ pet.name }}
+    {{ pet.photo_url }}
+    {% if pet.availble %}
+    <p><b>Available</b></p>
+      {% else %}
+      <p>Unavailable</p>
+    {% endif %}
+
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock content%}
