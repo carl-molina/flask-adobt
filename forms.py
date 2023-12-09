@@ -32,5 +32,6 @@ class EditPetForm(FlaskForm):
     notes = BooleanField("Notes",
                         validators=[Optional()])
 
+    # TODO: maybe a radio field here??
     available = BooleanField("Available",
                         validators=[Optional()])
