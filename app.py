@@ -51,7 +51,9 @@ def add_new_pet():
             age = form.age.data,
             photo_url = form.photo_url.data or "",
             notes = form.notes.data,
-            available= True)
+            available=True)
+
+        print('This is pet.available', pet.available)
 
         flash(f"{pet.name} added!")
 
@@ -69,22 +71,34 @@ def show_pet_info_and_edit_pet_info(pet_id):
     """Show pet info and form for edit pet info"""
 
     pet = Pet.query.get_or_404(pet_id)
+    print('This is pet instance', pet)
+
     form = EditPetForm(obj=pet)
+    print('This is form instance, form', form)
+
+    print('This is pet.notes', pet.notes)
+
+    print('This is pet.photo_url', pet.photo_url)
 
     if form.validate_on_submit():
+        print('Do we get form validation success?')
         pet.photo_url = form.photo_url.data
         pet.notes = form.notes.data
         pet.available = form.available.data
 
-
         flash(f"Pet {pet.id} successfully edited!")
+
 
         db.session.commit()
 
         return redirect('/')
 
     else:
-        return render_template("display_edit_form.html", form=form)
+        print('What is pet.available?', pet.available)
+        return render_template("display_edit_form.html",
+                               form=form,
+                               pet=pet
+        )
 
 # create a link on the homepage to edit pet info
-# create each pet a hyperlink on homepage
+

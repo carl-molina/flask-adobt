@@ -12,7 +12,7 @@ class AddPetForm(FlaskForm):
     species = StringField("Species",
                         validators=[InputRequired()])
     photo_url = StringField("Photo URL",
-                        validators=[InputRequired(), URL()])
+                        validators=[URL()])
     age = SelectField("Age",
                       choices=[('baby','Baby'),
                                ('young', 'Young'),
@@ -27,9 +27,9 @@ class EditPetForm(FlaskForm):
     """Form for editing pet information."""
 
     photo_url = StringField("Photo URL",
-                        validators=[InputRequired(), URL()])
+                        validators=[Optional(), URL()])
 
-    notes = BooleanField("Notes",
+    notes = StringField("Notes",
                         validators=[Optional()])
 
     # TODO: maybe a radio field here??

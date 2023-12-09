@@ -4,6 +4,12 @@
 
 <h1>Add Pet Form</h1>
 
+<div>
+  {% for msg in get_flashed_messages() %}
+  <p>{{ msg }}</p>
+  {% endfor %}
+</div>
+
 <form action="/add" method="POST">
 
   {{ form.hidden_tag() }} <!--add type=hidden form fields -->

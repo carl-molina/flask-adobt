@@ -26,15 +26,41 @@ User Detail
 </div>
 
 
-<h2>Edit Pet Information</h2>
+<!-- <h2>Edit Pet Information</h2>
 <form action="/{{ pet.id }}" method="POST">
     <label for="photo_url">Photo</label>
-    <input name="photo_url" value="{{ pet.name }}">
+    <input name="photo_url" value="{{ pet.photo_url }}">
+
     <label for="notes">Notes</label>
     <input name="notes" value="{{ pet.notes }}">
+
     <label for="available">Available</label>
     <input name="available" value="{{ pet.available }}">
-  <button>Submit Edit</button>
+
+  <button class="btn btn-primary">Submit Edit</button>
+</form> -->
+<!-- TODO: ^ Don't use this -->
+
+<form action="/{{ pet.id }}" method="POST">
+
+  {{ form.hidden_tag() }} <!--add type=hidden form fields -->
+
+  {% for field in form
+         if field.widget.input_type != 'hidden' %}
+
+    <div>
+      {{ field.label }}
+      {{ field }}
+
+      {% for error in field.errors %}
+        {{ error }}
+      {% endfor %}
+    </div>
+
+  {% endfor %}
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <a href="/" class="btn btn-outline-info">Cancel</a>
 </form>
 
 {% endblock content %}

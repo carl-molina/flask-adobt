@@ -14,12 +14,12 @@
 <ul>
   {% for pet in pets %}
   <li>
-    {{ pet.name }}
+    <a href="/{{ pet.id }}">{{ pet.name }}</a>
     <img src="{{ pet.photo_url }}"
     alt="{{ pet.name }}"
     class="img-fluid">
 
-    {% if pet.availble %}
+    {% if pet.available %}
     <p><b>Available</b></p>
       {% else %}
       <p>Unavailable</p>
