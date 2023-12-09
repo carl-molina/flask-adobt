@@ -50,7 +50,8 @@ def add_new_pet():
             species = form.species.data,
             age = form.age.data,
             photo_url = form.photo_url.data or "",
-            notes = form.notes.data)
+            notes = form.notes.data,
+            available= True)
 
         flash(f"{pet.name} added!")
 
@@ -84,3 +85,6 @@ def show_pet_info_and_edit_pet_info(pet_id):
 
     else:
         return render_template("display_edit_form.html", form=form)
+
+# create a link on the homepage to edit pet info
+# create each pet a hyperlink on homepage

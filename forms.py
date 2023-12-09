@@ -19,7 +19,7 @@ class AddPetForm(FlaskForm):
                                ('adult','Adult'),
                                ('senior', 'Senior')],
                        validators=[InputRequired()])
-    notes = BooleanField("Notes",
+    notes = StringField("Notes",
                         validators=[Optional()])
 
 

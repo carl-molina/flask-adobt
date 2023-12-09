@@ -1,9 +1,9 @@
-{% extends 'base.html %}
+{% extends 'base.html' %}
 
 {% block title %} {% endblock title %}
 
 {% block content %}
-
+<h1>Adopt-A-Pet Homepage</h1>
 <div>
   {% for msg in get_flashed_messages() %}
   <p>{{ msg }}</p>
@@ -15,7 +15,9 @@
   {% for pet in pets %}
   <li>
     {{ pet.name }}
-    {{ pet.photo_url }}
+    <img src="{{ pet.photo_url }}"
+    alt="{{ pet.name }}"
+    class="img-fluid">
 
     {% if pet.availble %}
     <p><b>Available</b></p>
